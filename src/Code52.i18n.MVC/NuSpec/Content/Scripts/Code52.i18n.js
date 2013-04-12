@@ -49,6 +49,13 @@
         Init: function (culture) {
             Globalize.culture(culture);
             window.Code52.Language.instance = new i18n();
+
+            $(document).ready(
+                function () {
+                    $.validator.methods.number = function(value, element) {
+                        return !isNaN(Globalize.parseFloat(value));
+                    };
+                });
         }
     };
 })(window);
